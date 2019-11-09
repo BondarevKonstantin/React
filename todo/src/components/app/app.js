@@ -10,9 +10,9 @@ import ItemStatusFilter from '../item-status-filter';
 const App = () => {
 
     const todoData = [
-        {label: 'Drink Coffee', important: false, id: 1},
-        {label: 'Make Awesome App', important: true, id: 2},
-        {label: 'Have fun', important: false, id: 3}
+        {label: 'Drink Coffee', id: 1},
+        {label: 'Make Awesome App', id: 2},
+        {label: 'Have fun', id: 3}
     ];
 
     return (
