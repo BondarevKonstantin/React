@@ -3,8 +3,17 @@ import React, {Component} from 'react';
 export default class ItemStatusFilter extends Component {
 
     onChosen = (e) => {
-        const value = e.target.value;
-        this.props.onFiltered(value);
+        const btns = document.querySelectorAll('.btn-group button');
+        btns.forEach(element => {
+            if (e.target === element) {
+                element.classList.remove('btn-outline-secondary');
+                element.classList.add('btn-info');
+            } else {
+                element.classList.add('btn-outline-secondary');
+                element.classList.remove('btn-info');
+            }
+        });
+        this.props.onFiltered(e.target);
     }
 
     render() {
@@ -18,8 +27,8 @@ export default class ItemStatusFilter extends Component {
                     All
                 </button>
                 <button type="button"
-                        className="btn btn-outline-secondary"
                         value="active"
+                        className="btn btn-outline-secondary"
                         onClick={ this.onChosen }>Active</button>
                 <button type="button"
                         value="done"

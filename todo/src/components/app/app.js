@@ -74,10 +74,10 @@ export default class App extends Component {
         ];
     };
 
-    filterItems = (value) => {
+    filterItems = (target) => {
         this.setState(({ filter }) => {
             return {
-                filter: value
+                filter: target.value
             };
         });
     };
