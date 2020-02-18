@@ -5,7 +5,9 @@ import RandomPlanet from '../random-planet';
 import PeoplePage from '../people-page'
 import ErrorIndicator from '../error-indicator';
 import ItemList from '../item-list';
-import PersonDetails from '../person-details';
+import ItemDetails from '../item-details';
+import ErrorBoundry from '../error-boundry';
+import Row from '../row';
 
 import './app.css';
 import SwapiService from '../../services/swapi-service';
@@ -24,41 +26,32 @@ export default class App extends Component {
 
     render() {
 
-        if (this.state.hasError) {
-            return <ErrorIndicator />
-        }
+        const {getPerson, getStarship, getPersonImage, getStarshipImage} = this.swapiService;
+
+        const personDetails = (
+            <ItemDetails
+                itemId={11}
+                getData={getPerson}
+                imageUrl={getPersonImage}/>
+        );
+
+        const starshipDetails = (
+            <ItemDetails
+                itemId={5}
+                getData={getStarship}
+                imageUrl={getStarshipImage} />
+        );
+
 
         return (
+            <ErrorBoundry>
             <div className="stardb-app">
                 <Header />
-                <RandomPlanet />
-
-                <PeoplePage />
-
-                <div className="row mb-2">
-                    <div className="col-md-6">
-                        <ItemList
-                            onItemSelected={this.onPersonSelected}
-                            getData={this.swapiService.getAllPlanets}
-                            renderItem={(item) => item.name}/>
-                    </div>
-                    <div className="col-md-6">
-                        <PersonDetails personId={ this.state.selectedPerson }/>
-                    </div>
-                </div>
-
-                <div className="row mb-2">
-                    <div className="col-md-6">
-                        <ItemList
-                            onItemSelected={this.onPersonSelected}
-                            getData={this.swapiService.getAllStarships}
-                            renderItem={(item) => item.name}/>
-                    </div>
-                    <div className="col-md-6">
-                        <PersonDetails personId={ this.state.selectedPerson }/>
-                    </div>
-                </div>
+                <Row
+                    left={personDetails}
+                    right={starshipDetails} />
             </div>
+            </ErrorBoundry>
         );
     };
 };
