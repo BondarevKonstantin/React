@@ -45,6 +45,10 @@ export default class App extends Component {
                 getData={getStarship}
                 imageUrl={getStarshipImage}>
 
+                <Record field="model" label="Model" />
+                <Record field="length" label="Length" />
+                <Record field="costInCredits" label="Price" />
+
             </ItemDetails>
         );
 
