@@ -1,23 +1,13 @@
 import React from 'react';
 import ItemList from '../item-list';
-import { withData, withSwapiService } from '../hoc-helpers';
+import { withData,
+         withSwapiService,
+         withChildFunction,
+         compose } from '../hoc-helpers';
 
-const withChildFunction = (fn) => (Wrapped) => {
-    return (props) => {
-        return(
-            <Wrapped {...props}>
-                {fn}
-            </Wrapped>
-        )
-    }
-};
 
 const renderName = ({ name }) => <span>{name}</span>;
 const renderModelAndName = ({ model, name }) => <span>{name} ({model})</span>
-
-const compose = (...funcs) => (comp) => {
-    return funcs.reduceRight((prevResult, f) => f(prevResult), comp);
-}
 
 const mapPersonMethodsToProps = (swapiService) => {
     return {
