@@ -6,6 +6,8 @@ import { withBookstoreService } from '../hoc';
 import { compose } from '../../utils';
 import { booksLoaded } from '../../actions';
 
+import './book-list.css';
+
 class BookList extends Component {
 
     componentDidMount() {
@@ -21,7 +23,7 @@ class BookList extends Component {
         const { books } = this.props;
 
         return (
-            <ul>
+            <ul className="book-list">
                 {
                     books.map((book) => {
                         return (
