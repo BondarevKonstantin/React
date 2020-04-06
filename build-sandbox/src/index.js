@@ -1,7 +1,7 @@
-import Log from './log';
-import Calc from './calc';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './main.sass';
 
-const calc = new Calc();
-const log = new Log();
+const App = () => <p>Dev</p>;
 
-log.log(calc.add(1, 2, 3))
+ReactDOM.render(<App />, document.getElementById('root'));
